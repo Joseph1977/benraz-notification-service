@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>bin\Debug\net6.0\Notifications.WebApi.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>bin\Release\net6.0\Notifications.WebApi.xml</DocumentationFile>
+		<DefineConstants>TRACE;EnableAuthorization</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Filters\**" />
+	  <Content Remove="Filters\**" />
+	  <EmbeddedResource Remove="Filters\**" />
+	  <None Remove="Filters\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
+		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NLog.Web.AspNetCore" Version="5.3.13" />
+		<PackageReference Include="Benraz.Infrastructure.Authorization" Version="1.0.3" />
+		<PackageReference Include="Benraz.Infrastructure.Gateways" Version="1.0.4" />
+		<PackageReference Include="Benraz.Infrastructure.Web" Version="1.0.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.7.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Notifications.Domain\Notifications.Domain.csproj" />
+		<ProjectReference Include="..\Notifications.EF\Notifications.EF.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Logs\" />
+	</ItemGroup>
+
+</Project>
+
